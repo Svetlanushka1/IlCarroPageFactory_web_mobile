@@ -6,15 +6,17 @@ import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import pages.HomePage;
+import pages.PageBase;
+import pages.SearchPage;
 
 import java.util.concurrent.TimeUnit;
 
-public class HomePageAppearCorrectTest {
-    WebDriver driver;
-    HomePage homePageObject;
+public class FirstLaunchAppTest extends InitDriver_BeforeEveryTest {
+   WebDriver driver;
+
+
     @BeforeSuite
-    public void init(){
+   public void init(){
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://ilcarro.web.app/search");
@@ -26,14 +28,21 @@ public class HomePageAppearCorrectTest {
     @Test
     public  void homePage_AppearsCorrect(){
 
-    //Create Home Page object and put driver in it
-        homePageObject = new HomePage(driver);
+    //Create Page object and put driver in it
+    searchPageObject = new SearchPage(driver);
 
     // verify logo page title
-        String homePageTitle = homePageObject.getPageTitle();
-        Assert.assertTrue(homePageTitle.contains("Search"));
-    // Assert.assertTrue(homePageObject.getHomePageTitleName().toLowerCase().contains(" Search "));
+       // String searchPageTitle = searchPageObject.getPageTitle();
+      //  Assert.assertTrue(searchPageTitle.contains("Search"));
+    Assert.assertTrue(searchPageObject.getPageTitle().contains("Search"));
 
+
+    }
+    @Test
+    public void checkUrlCorrect(){
+        PageBase pageBaseObject = new PageBase(driver);
+
+        pageBaseObject.isHomePageUrl();
     }
 
 }

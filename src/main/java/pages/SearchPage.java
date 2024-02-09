@@ -18,6 +18,7 @@ public class SearchPage{
     WebElement textSearch;
 
     public String getPageTitle() {
+
         return textSearch.getText();
     }
 

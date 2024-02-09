@@ -1,6 +1,21 @@
 package qatests;
 
-public class SearchCarTests extends StartingEveryTest{
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class SearchCarTests extends InitDriver_BeforeEveryTest {
+  @BeforeTest
+    public void checkSearchPageAppearsCorrect(){
+        Assert.assertTrue(searchPageObject.getPageTitle().contains("Search"));
+    }
+    @Test
+    public void findCarTest(){
+
+    System.out.println("SearchPageAppearsCorrect");
+
+    }
+
 
 }
 /*
