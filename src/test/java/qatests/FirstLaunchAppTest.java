@@ -11,11 +11,11 @@ import pages.SearchPage;
 
 import java.util.concurrent.TimeUnit;
 
-public class FirstLaunchAppTest extends InitDriver_BeforeEveryTest {
+public class FirstLaunchAppTest extends TestBase {/*
    WebDriver driver;
 
 
-    @BeforeSuite
+    //@BeforeSuite
    public void init(){
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -35,14 +35,16 @@ public class FirstLaunchAppTest extends InitDriver_BeforeEveryTest {
        // String searchPageTitle = searchPageObject.getPageTitle();
       //  Assert.assertTrue(searchPageTitle.contains("Search"));
     Assert.assertTrue(searchPageObject.getPageTitle().contains("Search"));
-
-
     }
+
+
+
+
     @Test
     public void checkUrlCorrect(){
         PageBase pageBaseObject = new PageBase(driver);
 
         pageBaseObject.isHomePageUrl();
     }
-
+*/
 }

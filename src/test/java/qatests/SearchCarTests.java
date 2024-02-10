@@ -1,10 +1,17 @@
 package qatests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.SearchPage;
 
-public class SearchCarTests extends InitDriver_BeforeEveryTest {
+public class SearchCarTests extends TestBase {
+   SearchPage searchPageObject = null;// = new SearchPage(driver);
+
+  public void createPages() {
+    searchPageObject = new SearchPage(driver);
+  }
   @BeforeTest
     public void checkSearchPageAppearsCorrect(){
         Assert.assertTrue(searchPageObject.getPageTitle().contains("Search"));

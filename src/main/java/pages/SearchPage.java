@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SearchPage{
     WebDriver driver;
+  //  SearchPage searchPageObject = new SearchPage(driver);
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;
