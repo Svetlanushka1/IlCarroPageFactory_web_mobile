@@ -1,5 +1,6 @@
 package pages;
 
+import manage.WebDriverManage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,39 +15,46 @@ import java.util.concurrent.TimeUnit;
 
 public class PageBase {
 
-    /*System.setProperty("webdriver.chrome.driver", "---Exact path to chromedriver.exe---");
-    WebDriver driver = new ChromeDriver();*/
-    WebDriver driver;
-   // static String browser;
 
-    public PageBase(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public PageBase() {
+        PageFactory.initElements(WebDriverManage.getDriver(), this);
+    }
+
+    protected void wait(WebElement element, int time) {
+        new WebDriverWait(WebDriverManage.getDriver(), time)
+                .until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public String getTextBase(WebElement element, int time) {
+        wait(element, time);
+        return element.getText().toUpperCase().trim();
+    }
+
+    public void clickBase(WebElement element, int time) {
+        wait(element, time);
+        element.click();
+    }
+
+
+    public void sendTextBase(WebElement element, int time, String text) {
+        wait(element, time);
+        element.click();
+        element.clear();
+        element.sendKeys(text);
 
     }
 
-/*
-    public void init() {
-        if (driver == null) {
-            driver = new ChromeDriver();
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-          // driver.get("https://ilcarro.web.app/search");
-            driver.navigate().to(ConfigProperties.getProperty("url"));
-            navigateToHomePage();
+
+    public boolean isTextContains(WebElement element, String expectedRes, int time) {
+        expectedRes = expectedRes.toUpperCase().trim();
+        String actualRes = getTextBase(element, time);
+        if(actualRes.contains(expectedRes)) {
+            return true;
+        } else {
+            System.out.println("expected result: " + expectedRes +
+                    " actual result: " + actualRes);
+            return false;
         }
     }
-    public void navigateToHomePage(){
-        driver.navigate().to(ConfigProperties.getProperty("url"));
-    }*/
-    public boolean isHomePageUrl(){
-        String currentUrl = driver.getCurrentUrl();
-        System.out.println("current url: " + currentUrl);
-        return currentUrl.equals(ConfigProperties.getProperty("url"));
-    }
-    public void tearDown() {
-        driver.quit();
-    }
-
-
-
 }
+
