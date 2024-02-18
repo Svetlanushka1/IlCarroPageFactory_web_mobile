@@ -8,6 +8,7 @@ import pages.LoginPage;
 import pages.SearchPage;
 import properties_data.ConfigProperties;
 import providers.DataProviderLogin;
+import providers.User;
 import providers.UserDtoLombok;
 
 public class LoginTest extends TestBase{
@@ -27,14 +28,17 @@ public class LoginTest extends TestBase{
     }
 
 
-  /*  @Test
+
+
+     @Test
     public void positiveLoginFromConfigProperties() {
-        UserDTO userPropertyFile = new UserDTO(ConfigProperties.getProperty("email"), ConfigProperties.getProperty("password"));
+        User userPropertyFile = new User(ConfigProperties.getProperty("email"), ConfigProperties.getProperty("password"));
         //logger.info("take login from PROPERTIES file");
-        TestBase.app.getUserHelper().login(userPropertyFile);
-        Assert.assertTrue(TestBase.app.getUserHelper().validatePopUpMessageSuccessAfterLogin());
+         searchPageObject.loginUser(userPropertyFile);
+        // Assert.assertTrue(searchPageObject.validatePopUpMessageSuccessAfterLogin());
+      searchPageObject.popUpOK();
        // logger.info("login using production PROPERTIES file");
-    }*/
+    }
     // @Test(dataProvider = "datalogin.csv",dataProviderClass = DataProviderLogin.class)
 
     /*

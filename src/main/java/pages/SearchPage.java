@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import properties_data.ConfigReaderLogin;
+import providers.User;
 import providers.UserDtoLombok;
 
 public class SearchPage extends PageBase{
@@ -99,5 +100,14 @@ public class SearchPage extends PageBase{
         }
     }
 
+    // log in get data from propertyFile
 
+    public void loginUser(User userPropertyFile) {
+        System.out.println(userPropertyFile.getEmail());
+        clickBase(btnLoginNavigatorMenu,30);
+        sendTextBase(inputEmailLoginForm, 30, userPropertyFile.getEmail());
+        sendTextBase( inputPasswordLoginForm, 30, userPropertyFile.getPassword());
+        clickBase(btnYallaLoginForm,10);
+
+    }
 }
