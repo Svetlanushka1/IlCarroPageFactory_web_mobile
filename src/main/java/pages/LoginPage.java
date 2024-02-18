@@ -1,28 +1,22 @@
 package pages;
 
+import manage.WebDriverManage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import properties_data.ConfigReaderLogin;
 import providers.UserDtoLombok;
 
 import java.time.Duration;
 
 public class LoginPage extends PageBase{
-    public LoginPage(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
-        PageFactory.initElements(driver,this);
+    public LoginPage() {
+        PageFactory.initElements(WebDriverManage.getDriver(),this);
     }
-
-    LoginPage loginPageObject = new LoginPage(driver);
- //******************************************************************** 
-
-    @FindBy(xpath = "btnLoginNavigatorMenu")
+    /*1. list of elements taht are situated on search page
+   // @FindBy(xpath = "btnLoginNavigatorMenu")
+    @FindBy(xpath = "//a[contains(@href, 'login')]")
     WebElement btnLoginNavigatorMenu;
     @FindBy(xpath = "//input[@id='email']")
     WebElement inputEmailLoginForm;
@@ -60,13 +54,15 @@ public class LoginPage extends PageBase{
     By errorMessageIncorrectPasswordReg = By.xpath(ConfigReaderLogin.getProperty("errorMessageIncorrectPasswordReg"));
 
 
-//***********************************************
+//login method
 
     public void loginUserDtoLombok(UserDtoLombok user) {
-        btnLoginNavigatorMenu.click();
-        inputEmailLoginForm.sendKeys(user.getEmail());
-        inputPasswordLoginForm.sendKeys(user.getPassword());
-        btnYallaLoginForm.click();
+        System.out.println(user.getEmail());
+        clickBase(btnLoginNavigatorMenu,30);
+        sendTextBase(inputEmailLoginForm, 30, user.getEmail());
+        sendTextBase( inputPasswordLoginForm, 30, user.getPassword());
+        clickBase(btnYallaLoginForm,10);
+
     }
 
     public boolean validatePopUpMessageSuccessAfterLogin() {
@@ -89,16 +85,9 @@ public class LoginPage extends PageBase{
             return false;
         }
     }
+*/
 
-  /*  public String getTextBase(By locator) {
-        WebElement el = findElementBase(locator);
-        return el.getText().trim().toUpperCase();
-    }
-    private WebElement findElementBase(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(3000));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        return driver.findElement(locator);
-    }*/
+  //*******************  REGISTRATION form
     /*
     public void fillRegistrationForm(UserDtoLombok user) {
         clickBase(btnOpenRegForm);

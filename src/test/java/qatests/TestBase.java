@@ -1,12 +1,13 @@
 package qatests;
 
+import pages.LoginPage;
 import pages.SearchPage;
 
 public class TestBase {
    // PageBase pageBaseObject = new PageBase();
 
     SearchPage searchPageObject = new SearchPage();
-   // LoginPage loginPage = new LoginPage();
+    LoginPage loginPageObject = new LoginPage();
  //   SignUpPage signUpPage = new SignUpPage();
  //   MyCarsPage myCarsPage = new MyCarsPage();
   //  AddNewCarPage addNewCarPage = new AddNewCarPage();

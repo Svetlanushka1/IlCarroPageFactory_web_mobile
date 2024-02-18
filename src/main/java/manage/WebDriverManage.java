@@ -15,10 +15,21 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverManage {
+    //= AppiumConfig
+
 
     /*System.setProperty("webdriver.chrome.driver", "---Exact path to chromedriver.exe---");
    WebDriver driver = new ChromeDriver();*/
+
+    //1. Driver != null
     public static WebDriver driver;
+    //2. get driver
+    public static WebDriver getDriver() {
+        if (driver == null) {
+            init();
+        }
+        return driver;
+    }
     // static String browser;
 
     public WebDriverManage(WebDriver driver) {
@@ -26,6 +37,7 @@ public class WebDriverManage {
         PageFactory.initElements(driver, this);
 
     }
+    //3. open browser
     @BeforeSuite
     public static void init() {
 
@@ -44,15 +56,11 @@ public class WebDriverManage {
         System.out.println("current url: " + currentUrl);
         return currentUrl.equals(ConfigProperties.getProperty("url"));
     }
+    //4. close browser
     @AfterSuite
     public void tearDown() {
         driver.quit();
     }
 
-    public static WebDriver getDriver() {
-        if (driver == null) {
-            init();
-        }
-        return driver;
-    }
+
 }
