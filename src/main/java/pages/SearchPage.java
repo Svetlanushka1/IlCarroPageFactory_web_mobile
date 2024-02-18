@@ -81,7 +81,9 @@ public class SearchPage extends PageBase{
 
     public boolean validatePopUpMessageSuccessAfterLogin() {
         return isTextContains(textSuccessLoginPopUp, ConfigReaderLogin.getProperty("msgLoggedInSuccess"));
+
     }
+
 
     private boolean isTextContains(WebElement textSuccessLoginPopUp, String msgLoggedInSuccess) {
         return isTextEqual(textSuccessLoginPopUp, ConfigReaderLogin.getProperty("msgLoggedInSuccess"));
@@ -108,6 +110,7 @@ public class SearchPage extends PageBase{
         sendTextBase(inputEmailLoginForm, 30, userPropertyFile.getEmail());
         sendTextBase( inputPasswordLoginForm, 30, userPropertyFile.getPassword());
         clickBase(btnYallaLoginForm,10);
+
 
     }
 }

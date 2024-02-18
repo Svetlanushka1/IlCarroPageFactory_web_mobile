@@ -12,6 +12,12 @@ import providers.User;
 import providers.UserDtoLombok;
 
 public class LoginTest extends TestBase{
+    @BeforeMethod(alwaysRun = true)
+    public void preconditionsLogin() {
+
+        //logoutIflogin();
+    }
+
 
 
     @Test
@@ -26,32 +32,30 @@ public class LoginTest extends TestBase{
         searchPageObject.popUpOK();
 
     }
-
-
-
-
+    // data from prod.properties file
      @Test
     public void positiveLoginFromConfigProperties() {
         User userPropertyFile = new User(ConfigProperties.getProperty("email"), ConfigProperties.getProperty("password"));
         //logger.info("take login from PROPERTIES file");
          searchPageObject.loginUser(userPropertyFile);
-        // Assert.assertTrue(searchPageObject.validatePopUpMessageSuccessAfterLogin());
-      searchPageObject.popUpOK();
+        Assert.assertTrue(searchPageObject.validatePopUpMessageSuccessAfterLogin());
+        searchPageObject.popUpOK();
        // logger.info("login using production PROPERTIES file");
     }
+    //data from datalogin.csv    file
     // @Test(dataProvider = "datalogin.csv",dataProviderClass = DataProviderLogin.class)
 
-    /*
     @Test(groups = {"smoke"}, dataProvider = "loginCSV",dataProviderClass = DataProviderLogin.class)
-    public void positiveLoginProvider(UserDtoLombok user){
+    public void positiveLoginProvider(UserDtoLombok userCSV){
         //logger.info("User: " + user.toString());
-        loginPageObject.loginUserDtoLombok(user);
+        searchPageObject.loginUserDtoLombok(userCSV);
        // flagLogin = true;
        // flagPopUp = true;
-        Assert.assertTrue(loginPageObject.validatePopUpMessageSuccessAfterLogin());
+      //  Assert.assertTrue(searchPageObject.validatePopUpMessageSuccessAfterLogin());
         //logger.info("login using CSV file");
+        searchPageObject.popUpOK();
 
-    }*/
+    }
 
 
   /*  @Test(dataProvider = "negativeLoginCSV", dataProviderClass = DataProviderLogin.class)
