@@ -5,16 +5,47 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import properties_data.ConfigReaderLogin;
 import providers.UserDtoLombok;
 
 import java.time.Duration;
+import java.util.List;
 
-public class LoginPage extends PageBase{
+public class LoginPage extends PageBase {
     public LoginPage() {
-        PageFactory.initElements(WebDriverManage.getDriver(),this);
+
+        PageFactory.initElements(WebDriverManage.getDriver(), this);
     }
-    /*1. list of elements taht are situated on search page
+
+ /*   @FindBy(xpath = "//a[contains(@href, 'logout')]")
+    WebElement btnLogout;
+    @FindBy(xpath = "//a[contains(@href, 'logout')]")
+    public List<WebElement> elementsListLogout;
+
+    //     **********  is element exist??????
+    public boolean btnLogoutExist() {
+        return isElementExist((WebElement) elementsListLogout);
+    }
+    public boolean  isElementExist(WebElement element) {
+        return elementsListLogout.size() > 0;
+    }
+    public void logout() {
+        clickBase(btnLogout, 30);
+    }
+
+
+        public SearchPage logoutIfDisplayed() {
+        if(isElementDisplayed(btnLogout,30)){
+            btnLogout.click();
+        }
+        return new SearchPage();
+    }*/
+}
+
+
+    /*1. elements situated on the search page
    // @FindBy(xpath = "btnLoginNavigatorMenu")
     @FindBy(xpath = "//a[contains(@href, 'login')]")
     WebElement btnLoginNavigatorMenu;
@@ -26,8 +57,7 @@ public class LoginPage extends PageBase{
     WebElement btnYallaLoginForm;
     @FindBy(xpath = "//h2[@class='message']")
     WebElement textSuccessLoginPopUp;
-    @FindBy(xpath = "//a[contains(@href, 'logout')]")
-    WebElement btnLogout;
+
     @FindBy(xpath = "//input[@autocomplete='email']/..//div//div")
     WebElement errorMessageWrongEmailReg;
     @FindBy(xpath = "//input[@autocomplete='email']/..//div//div")
@@ -87,7 +117,7 @@ public class LoginPage extends PageBase{
     }
 */
 
-  //*******************  REGISTRATION form
+//*******************  REGISTRATION form
     /*
     public void fillRegistrationForm(UserDtoLombok user) {
         clickBase(btnOpenRegForm);
@@ -110,15 +140,6 @@ public class LoginPage extends PageBase{
     }
 
 
-
-    //    solution for not exist button
-    public boolean btnLogoutExist() {
-        return isElementExist(btnLogout);
-    }
-
-    public void logout() {
-        clickBase(btnLogout);
-    }
     public void clickOkPopUpSuccessLogin() {
 //        clickBase(btnOkPopUp);
 //        clickBase(textPopUpSuccessRegH1);
@@ -142,4 +163,4 @@ public class LoginPage extends PageBase{
     }
 }
      */
-}
+

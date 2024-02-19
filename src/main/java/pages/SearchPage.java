@@ -1,6 +1,7 @@
 package pages;
 
 import manage.WebDriverManage;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,9 +9,11 @@ import properties_data.ConfigReaderLogin;
 import providers.User;
 import providers.UserDtoLombok;
 
-public class SearchPage extends PageBase{
+
+public class SearchPage extends PageBase {
     public SearchPage() {
-        PageFactory.initElements(WebDriverManage.getDriver(),this);
+
+        PageFactory.initElements(WebDriverManage.getDriver(), this);
     }
 
 
@@ -18,20 +21,21 @@ public class SearchPage extends PageBase{
     @FindBy(xpath = "//h1[@class='title']")
     WebElement textSearchTitle;
 
-    public String getPageTitle() {
 
+    public String getPageTitle() {
         return textSearchTitle.getText();
         //Find your car now!
     }
-    public boolean isTitleSearchPageContain(){
+
+    public boolean isTitleSearchPageContain() {
 
         System.out.println("SearchPageAppearsCorrect");
-        return isTextContains(textSearchTitle,"Find your car now!",10);
+        return isTextContains(textSearchTitle, "Find your car now!", 10);
 
     }
 
     //********* log in from Search page - list of elements situated on search page
-   // @FindBy(xpath = "btnLoginNavigatorMenu")
+    // @FindBy(xpath = "btnLoginNavigatorMenu")
     @FindBy(xpath = "//a[contains(@href, 'login')]")
     WebElement btnLoginNavigatorMenu;
     @FindBy(xpath = "//input[@id='email']")
@@ -47,7 +51,7 @@ public class SearchPage extends PageBase{
     @FindBy(xpath = "//a[contains(@href, 'logout')]")
     WebElement btnLogout;
 
-
+//By btnLogout = By.xpath(ConfigReader.getProperty("btnLogout"));
 
   /* // By btnLoginNavigatorMenu = By.xpath(ConfigReaderLogin.getProperty("btnLoginNavigatorMenu"));
    // By inputEmailLoginForm = By.xpath(ConfigReaderLogin.getProperty("inputEmailLoginForm"));
@@ -68,16 +72,25 @@ public class SearchPage extends PageBase{
 
     public void loginUserDtoLombok(UserDtoLombok user) {
         System.out.println(user.getEmail());
-        clickBase(btnLoginNavigatorMenu,30);
+        clickBase(btnLoginNavigatorMenu, 30);
         sendTextBase(inputEmailLoginForm, 30, user.getEmail());
-        sendTextBase( inputPasswordLoginForm, 30, user.getPassword());
-        clickBase(btnYallaLoginForm,10);
+        sendTextBase(inputPasswordLoginForm, 30, user.getPassword());
+        clickBase(btnYallaLoginForm, 10);
 
 
     }
-    public void popUpOK(){
+
+    public void popUpOK() {
         clickBase(btnOkPopUp, 30);
     }
+  /*  public void clickOkPopUpSuccessLogin() {
+//        clickBase(btnOkPopUp);
+//        clickBase(textPopUpSuccessRegH1);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(3000));
+        wait.until(ExpectedConditions.textMatches(textSuccessLoginPopUp, Pattern.compile("[\\w]*")));
+        jsClickBase(btnOkPopUpStr);
+
+    }*/
 
     public boolean validatePopUpMessageSuccessAfterLogin() {
         return isTextContains(textSuccessLoginPopUp, ConfigReaderLogin.getProperty("msgLoggedInSuccess"));
@@ -106,11 +119,23 @@ public class SearchPage extends PageBase{
 
     public void loginUser(User userPropertyFile) {
         System.out.println(userPropertyFile.getEmail());
-        clickBase(btnLoginNavigatorMenu,30);
+        clickBase(btnLoginNavigatorMenu, 30);
         sendTextBase(inputEmailLoginForm, 30, userPropertyFile.getEmail());
-        sendTextBase( inputPasswordLoginForm, 30, userPropertyFile.getPassword());
-        clickBase(btnYallaLoginForm,10);
+        sendTextBase(inputPasswordLoginForm, 30, userPropertyFile.getPassword());
+        clickBase(btnYallaLoginForm, 10);
 
 
     }
+
+    public SearchPage logoutIfDisplayed() {
+        if (isElementDisplayed(btnLogout, 30)) {
+            System.out.println("Login is active. Do logout");
+            btnLogout.click();
+        }
+        System.out.println("Logout is not necessary");
+        return new SearchPage();
+    }
+
+
 }
+

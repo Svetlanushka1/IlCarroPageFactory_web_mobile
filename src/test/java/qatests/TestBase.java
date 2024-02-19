@@ -8,6 +8,7 @@ public class TestBase {
 
     SearchPage searchPageObject = new SearchPage();
     LoginPage loginPageObject = new LoginPage();
+
  //   SignUpPage signUpPage = new SignUpPage();
  //   MyCarsPage myCarsPage = new MyCarsPage();
   //  AddNewCarPage addNewCarPage = new AddNewCarPage();

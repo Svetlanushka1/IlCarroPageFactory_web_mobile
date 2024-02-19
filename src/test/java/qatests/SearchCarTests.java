@@ -1,6 +1,8 @@
 package qatests;
+import manage.WebDriverManage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.SearchPage;
 
 
 public class SearchCarTests extends TestBase {

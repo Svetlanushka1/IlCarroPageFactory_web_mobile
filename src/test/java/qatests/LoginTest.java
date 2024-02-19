@@ -2,25 +2,19 @@ package qatests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.LoginPage;
-import pages.SearchPage;
 import properties_data.ConfigProperties;
 import providers.DataProviderLogin;
 import providers.User;
 import providers.UserDtoLombok;
 
 public class LoginTest extends TestBase{
-    @BeforeMethod(alwaysRun = true)
+ @BeforeMethod(alwaysRun = true)
     public void preconditionsLogin() {
-
-        //logoutIflogin();
+      searchPageObject.logoutIfDisplayed();
     }
 
-
-
-    @Test
+    @Test(priority = 1)
     public void hardCodePositiveLogin(){
         searchPageObject.getPageTitle();
         UserDtoLombok user = UserDtoLombok.builder()
