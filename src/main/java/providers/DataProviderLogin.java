@@ -1,6 +1,7 @@
 package providers;
 
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,6 +15,7 @@ public class DataProviderLogin {
 
     @DataProvider
     public Iterator<Object[]> loginCSV() {
+//@Test(groups = {"smoke"}, dataProvider = "loginCSV",dataProviderClass = DataProviderLogin.class)
         List<Object[]> list = new ArrayList<>();
         String path = "src/test/resources/datalogin.csv";
         try (BufferedReader reader = new BufferedReader(new FileReader(new File(path)))) {
@@ -36,6 +38,7 @@ public class DataProviderLogin {
 
     @DataProvider
     public Iterator<Object[]> negativeLoginCSV() {
+     // @Test(dataProvider = "negativeLoginCSV", dataProviderClass = DataProviderLogin.class)
         List<Object[]> list = new ArrayList<>();
         String path = "src/test/resources/dataloginnegative.csv";
         try (BufferedReader reader = new BufferedReader(new FileReader(new File(path)))) {

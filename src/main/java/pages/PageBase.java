@@ -1,10 +1,12 @@
 package pages;
 
 import manage.WebDriverManage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import properties_data.ConfigReaderLogin;
 
 
 // @FindBy(xpath = "element") WebElement element ;
@@ -35,7 +37,9 @@ public class PageBase {
         wait(element, time);
         element.click();
     }
-
+    public void click(By locator){
+        WebDriverManage.getDriver().findElement(locator).click();
+    }
 
 //5. my type text
 
@@ -47,7 +51,16 @@ public class PageBase {
 
     }
 
-    //6. is text contains
+    //6. is element exist
+    public boolean isElementDisplayed(WebElement element, int time) {
+        try{
+            wait(element, time);
+            return element.isDisplayed();
+        }catch (Exception ex){
+            return  false;
+        }
+    }
+    // 7. is text contains
     public boolean isTextContains(WebElement element, String expectedRes, int time) {
         expectedRes = expectedRes.toUpperCase().trim();
         String actualRes = getTextBase(element, time);
@@ -59,35 +72,33 @@ public class PageBase {
             return false;
         }
     }
-    public boolean isElementDisplayed(WebElement element, int time) {
-        try{
-        wait(element, time);
-        return element.isDisplayed();
-    }catch (Exception ex){
-        return  false;
+    public boolean validatePopUpMessageSuccessAfterLogin(WebElement textSuccessLoginPopUp, String msgLoggedInSuccess) {
+        return isTextContains(textSuccessLoginPopUp, ConfigReaderLogin.getProperty("msgLoggedInSuccess"));
+    }
+    public boolean validatePopUpMessageLoginIncorrect(WebElement textSuccessLoginPopUp, String msgLoggedInSuccess) {
+        return isTextEqual(textSuccessLoginPopUp, ConfigReaderLogin.getProperty("msgWrongLogin"));
+    }
+
+    private boolean isTextContains(WebElement textSuccessLoginPopUp, String msgLoggedInSuccess) {
+        return isTextEqual(textSuccessLoginPopUp, ConfigReaderLogin.getProperty("msgWrongLogin"));
+    }
+
+    private boolean isTextEqual(WebElement textSuccessLoginPopUp, String expectedResult) {
+
+        String actualResult = textSuccessLoginPopUp.getText();
+        expectedResult = expectedResult.toUpperCase();
+
+        if (expectedResult.equals(actualResult)) {
+            return true;
+        } else {
+            System.out.println("expected result: " + expectedResult + "actual result: " + actualResult);
+            return false;
         }
     }
-    /*
-   @FindBy(xpath = "//a[contains(@href, 'logout')]")
-    WebElement btnLogout;
-    @FindBy(xpath = "//a[contains(@href, 'logout')]")
-    public List<WebElement> elementsListLogout;
-
-   public void logout() {
-        clickBase(btnLogout, 30);
-    }
 
 
- //     **********  is element exist??????
-    public boolean btnLogoutExist() {
-       boolean isExist = false;
-       if(elementsListLogout.size() > 0)
-           isElementExist((WebElement) elementsListLogout);
-       return isExist;
-    }
-    public boolean  isElementExist(WebElement element) {
-        return elementsListLogout.size() > 0;
-    }*/
+
+
 }
 
 

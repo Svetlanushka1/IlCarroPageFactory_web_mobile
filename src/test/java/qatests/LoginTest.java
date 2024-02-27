@@ -52,18 +52,18 @@ public class LoginTest extends TestBase{
     }
 
 
-  /*  @Test(dataProvider = "negativeLoginCSV", dataProviderClass = DataProviderLogin.class)
+   @Test(dataProvider = "negativeLoginCSV", dataProviderClass = DataProviderLogin.class)
     public void negativeDataLoginCSV(UserDtoLombok user) {
-        loginPageObject.loginUserDtoLombok(user);
+        searchPageObject.loginUserDtoLombok(user);
        // flagPopUp = true;
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        Assert.assertTrue(loginPageObject.validatePopUpMessageLoginIncorrect());
-    }*/
+       // Assert.assertTrue(loginPageObject.validatePopUpMessageLoginIncorrect());
+    }
 
-//TODO adapt find element like @Find by
+//TODO logout
 
 }
