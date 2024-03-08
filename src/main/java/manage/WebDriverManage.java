@@ -49,8 +49,14 @@ public class WebDriverManage {
 
     }
     public static void navigateToHomePage(){
+
         driver.navigate().to(ConfigProperties.getProperty("url"));
     }
+
+    public static void navigateToPage(String url) {
+        driver.navigate().to(url);
+    }
+
     public boolean isHomePageUrl(){
         String currentUrl = driver.getCurrentUrl();
         System.out.println("current url: " + currentUrl);

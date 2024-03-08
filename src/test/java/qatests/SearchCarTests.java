@@ -21,6 +21,7 @@ public class SearchCarTests extends TestBase {
     public void checkSearchPageAppearsCorrect(){
       searchPageObject.isTitleSearchPageContain();
        Assert.assertTrue(searchPageObject.getPageTitle().contains("Find your car now!"));
+
     }
     @Test
     public void searchCurrentMonthSuccess(){
@@ -28,7 +29,12 @@ public class SearchCarTests extends TestBase {
         searchPageObject.submitForm();
         Assert.assertTrue(searchPageObject.isListOfCarsAppeared());
     }
-
+    @Test
+    public void searchCarTelAviv(){
+        searchPageObject.fillSearchForm("Tel Aviv","04/25/2024","06/29/2024");
+        searchPageObject.submitForm();
+    }
+/*
     @Test (groups = {"smoke"})
     public void searchNextMonthSuccess(){
         searchPageObject.searchNextMonth("Jerusalem Israel","11/25/2022","11/30/2022");
@@ -44,7 +50,7 @@ public class SearchCarTests extends TestBase {
         Assert.assertTrue(searchPageObject.isListOfCarsAppeared());
         Assert.assertTrue(searchPageObject.isDataCorrect("2/20/2023","6/10/2023"));
     }
- /*   @Test
+    @Test
     public void searchInPast(){
         searchPageObject.typePeriodInPast("Rehovot Israel","10/5/2022","10/10/2022");
         searchPageObject.submitWithoutWait();

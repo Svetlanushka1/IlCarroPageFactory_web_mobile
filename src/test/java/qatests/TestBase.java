@@ -1,5 +1,6 @@
 package qatests;
 
+import pages.LetTheCarWorkPage;
 import pages.LoginPage;
 import pages.SearchPage;
 
@@ -8,10 +9,8 @@ public class TestBase {
 
     SearchPage searchPageObject = new SearchPage();
     LoginPage loginPageObject = new LoginPage();
+    LetTheCarWorkPage letTheCarWorkPageObject = new LetTheCarWorkPage();
 
- //   SignUpPage signUpPage = new SignUpPage();
- //   MyCarsPage myCarsPage = new MyCarsPage();
-  //  AddNewCarPage addNewCarPage = new AddNewCarPage();
    // RandomUtils randomUtils = new RandomUtils();
 
    /* UserDTO user = UserDTO.builder()

@@ -79,11 +79,11 @@ public class PageBase {
         return isTextEqual(textSuccessLoginPopUp, ConfigReaderLogin.getProperty("msgWrongLogin"));
     }
 
-    private boolean isTextContains(WebElement textSuccessLoginPopUp, String msgLoggedInSuccess) {
+    public boolean isTextContains(WebElement textSuccessLoginPopUp, String msgLoggedInSuccess) {
         return isTextEqual(textSuccessLoginPopUp, ConfigReaderLogin.getProperty("msgWrongLogin"));
     }
 
-    private boolean isTextEqual(WebElement textSuccessLoginPopUp, String expectedResult) {
+    public boolean isTextEqual(WebElement textSuccessLoginPopUp, String expectedResult) {
 
         String actualResult = textSuccessLoginPopUp.getText();
         expectedResult = expectedResult.toUpperCase();

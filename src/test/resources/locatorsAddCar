@@ -1,0 +1,61 @@
+/1) add new car button
+    @FindBy(xpath = "//a[contains(@href,'let-car-work')]")
+    WebElement btnAddNewCarMenu; //btnAddNewCarMenu = //a[contains(@href,'let-car-work')]
+    // btnSubmitNewCar = //button[@type='submit']
+    //By btnAddNewCarMenu=By.id(CarConfigReader.getProperty("btnAddNewCarMenu"));
+
+//2) placeholder="Enter your address"  - city
+    @FindBy(xpath = "//*[@id='pickUpPlace'] ")
+    WebElement inputLocationXPath; // By inputLocation = By.xpath(CarConfigReader.getProperty("inputLocationXPath"));
+            // inputLocationId = pickUpPlace -> By inputLocation= By.id("pickUpPlace");
+    //By locationInputLocator=By.xpath("//input[@id='pickUpPlace']");
+    @FindBy(xpath = "//div[contains(@class, 'pac-container pac-logo hdpi') and not(contains(@style, 'display: none'))]")
+    WebElement containerCities ;
+    //containerCities= //div[contains(@class, 'pac-container pac-logo hdpi') and not(contains(@style, 'display: none'))]
+    //By containerCities=By.xpath("//div[contains(@class, 'pac-container pac-logo hdpi') and not(contains(@style, 'display: none'))]");
+    //By containerCities = By.xpath("/html/body/div[2]/div[1]/span[2]/span");
+    //By containerCities = By.cssSelector("body > div:nth-child(14) > div:nth-child(1) > span.pac-item-query > span");
+
+//3) type manufacture
+    @FindBy(xpath = "//input[@id='make']")
+    WebElement inputManifacturexPath;//inputManifacturexPath = //input[@id='make']  -  By inputManifacture = By.xpath("//input[@id='make']");
+//    @FindBy(id = CarConfigReader.getProperty("manufactureId"))
+// 4) type model
+    @FindBy(xpath = "//input[@id='model']")
+    WebElement inputModelxPath;//inputModelxPath = //input[@id='model']  ->    By inputModel = By.xpath("//input[@id='model']"); ->  By model = By.id(CarConfigReader.getProperty("model"));
+//5) type year
+     @FindBy(id = "year")
+     WebElement inputYearId;//inputYearId = year  -> By inputYear = By.id("year");
+
+//6) select fuel Diesel - [1]
+    @FindBy(id = "fuel")
+    WebElement selectFuelId;//selectFuelId = fuel -> By selectFuel= By.id("fuel");
+
+//7)type seats
+    @FindBy(id = "seats")
+    WebElement inputSeatsId; // inputSeatsId = seats -> By inputSeats= By.id("seats");
+
+//8)type class
+    @FindBy(id = "class")
+    WebElement inputClassId;// inputClassId =class->By inputClass=By.id("class");
+// 9) type Car registration number
+    @FindBy(id = "serialNumber")
+    WebElement inputSerialNumberId;// inputSerialNumberId = serialNumber -> By inputSerialNumber= By.id("serialNumber");
+
+// 10) type price
+@FindBy(id = "price")
+    WebElement inputPriceId ; //inputPriceId= price -> By inputPrice= By.id("price");
+
+    @FindBy(xpath = "//div[@class='dialog-container']//h1[@class='title']")// textPopUpTitle= //div[@class='dialog-container']//h1[@class='title']
+    WebElement textPopUpTitle ;// By textPopUpTitle=By.xpath("//div[@class='dialog-container']//h1[@class='title']");// By textPopupTitle=By.xpath(CarConfigReader.getProperty("textPopupTitle"));
+
+    @FindBy(xpath = "//button[contains(@class, 'negative-button')]")//btnAddAnotherCarPopUp = //button[contains(@class, 'negative-button')]
+    WebElement btnAddAnotherCarPopUp;//By btnAddAnotherCarPopUp=By.xpath("//button[contains(@class, 'negative-button')]");
+
+
+    @FindBy(id = "about")//By inputAbout=By.id("about");
+    WebElement inputAbout ;
+    @FindBy(id = "photos")//By labelPhoto=By.id("photos");
+    WebElement labelPhoto ;
+    @FindBy(xpath = "//button[@type='submit']") //By btnSubmitNewCar=By.xpath("//button[@type='submit']");
+    WebElement btnSubmitNewCar ;
